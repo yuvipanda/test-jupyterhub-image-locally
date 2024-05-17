@@ -1,0 +1,16 @@
+services:
+    jupyterhub:
+        ports:
+            - 8000:8000
+            - 8081:8081
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        networks:
+          - jupyterhub
+        build:
+          context: .
+
+networks:
+  jupyterhub:
+    name: jupyterhub
