@@ -35,4 +35,10 @@ c.DockerSpawner.image = "jupyter/base-notebook"
 # don't delete containers when they stop, so we can look at logs
 c.DockerSpawner.remove = False
 
+# Mount an empty volume on the home directory, to simulate $HOME in the built
+# image not showing up when user launches on a hub.
+c.DockerSpawner.mounts = [
+    {"source": "homes", "target": "/home/jovyan"}
+]
+
 c.Spawner.start_timeout = 60 * 10

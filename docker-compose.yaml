@@ -14,3 +14,6 @@ services:
 networks:
   jupyterhub:
     name: jupyterhub
+
+volumes:
+  homes:
