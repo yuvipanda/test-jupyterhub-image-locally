@@ -1,4 +1,7 @@
 c = get_config()  # noqa
+from dockerspawner import DockerSpawner
+from datetime import datetime
+import time
 
 
 options_form_tpl = """
@@ -11,16 +14,24 @@ def get_options_form(spawner):
     return options_form_tpl.format(default_image=spawner.image)
 
 
-c.JupyterHub.authenticator_class = 'tmp'
-c.JupyterHub.spawner_class = 'docker'
+c.JupyterHub.authenticator_class = 'dummy'
+
+
+class NewContainerSpawner(DockerSpawner):
+    def template_namespace(self):
+        ns = super().template_namespace()
+        ns['start_timestamp'] = int(time.time())
+        return ns
+
+c.JupyterHub.spawner_class = NewContainerSpawner
 
 c.DockerSpawner.options_form = get_options_form
+c.DockerSpawner.name_template = "{prefix}-{username}-{start_timestamp}"
 
 # specify that DockerSpawner should accept any image from user input
 c.DockerSpawner.allowed_images = "*"
 
 # tell JupyterHub to use DockerSpawner
-c.JupyterHub.spawner_class = "docker"
 c.DockerSpawner.network_name = "jupyterhub"
 
 # while using dummy auth, make the *public* (proxy) interface private
@@ -41,4 +52,3 @@ c.DockerSpawner.mounts = [
     {"source": "homes", "target": "/home/jovyan"}
 ]
 
-c.Spawner.start_timeout = 60 * 10

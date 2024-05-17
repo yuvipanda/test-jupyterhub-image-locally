@@ -22,18 +22,29 @@ On your local machine, you need the following tools installed:
    docker-compose up --build
    ```
 
-3. Go to https://localhost:8000, you should see a JupyterHub running
+3. Go to https://localhost:8000, you should see a JupyterHub running!
 
-4. You should see a text box that allows you to specify any docker image to start. Enter the
+4. Login with any username, and any password.
+
+5. You should see a text box that allows you to specify any docker image to start. Enter the
    name of the image you wanna try.
 
-5. If it starts up successfully, then success!
+6. If it starts up successfully, then success!
 
-6. If the image fails to start, you can use regular `docker` commands to look at its logs.
+7. If the image fails to start, you can use regular `docker` commands to look at its logs.
+
+   First, find the id of the container that failed.
 
    ```bash
-   # Find the name of the container
-   $ docker ps -a
-   # Once you found the container, look at logs
-   $ docker logs <container-id>
+   docker ps -a
+   ```
+
+   The container *name* should look like `jupyter-<username>-<unix-timestamp>`. For example, if your
+   username was `test`, and you tried to start the server somemtime on May 27, 2024, the name of the
+   container may look like `jupyter-test-1715981236`
+
+   Once you have find the name of the container, you can look at container logs with:
+
+   ```bash
+   docker logs <container-name>
    ```
