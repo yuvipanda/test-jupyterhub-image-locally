@@ -48,3 +48,19 @@ On your local machine, you need the following tools installed:
    ```bash
    docker logs <container-name>
    ```
+
+## Common issues
+
+### "404 : Not Found"
+
+Your server starts, but you get a '404: Not Found' message on your browser.
+
+[![Jupyter Server: 404](images/404.png)]
+
+This *most likely* means that you don't have the `jupyterhub` package installed
+inside the container image. Make sure that you have one of:
+
+1. The [`jupyterhub`](http://pypi.org/project/jupyterhub) package installed from PyPI
+2. `jupyterhub` or `jupyterhub-singleuser` package installed from `conda-forge`
+
+You only need one of these, not both.
