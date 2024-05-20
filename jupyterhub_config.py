@@ -28,6 +28,9 @@ c.JupyterHub.spawner_class = NewContainerSpawner
 c.DockerSpawner.options_form = get_options_form
 c.DockerSpawner.name_template = "{prefix}-{username}-{start_timestamp}"
 
+# We need to explicitly set this now
+c.DockerSpawner.cmd = ["jupyterhub-singleuser"]
+
 # specify that DockerSpawner should accept any image from user input
 c.DockerSpawner.allowed_images = "*"
 
