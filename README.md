@@ -49,6 +49,12 @@ On your local machine, you need the following tools installed:
    docker logs <container-name>
    ```
 
+## Useful resources
+
+[This discourse topic](https://discourse.jupyter.org/t/simplest-possible-dockerfile-that-runs-with-jupyterhub/25810)
+has some examples of what a 'minimal working `Dockerfile` for use with a JupyterHub` looks like,
+and you may find it useful!
+
 ## Common issues
 
 ### "404 : Not Found"
