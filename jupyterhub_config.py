@@ -55,3 +55,8 @@ c.DockerSpawner.mounts = [
     {"source": "homes", "target": "/home/jovyan"}
 ]
 
+# Wait upto 5minutes for server to start, as pulling images may take a while
+c.Spawner.start_timeout = 5 * 60
+
+# Always pull remote images, even if they already exist locally
+c.DockerSpawner.pull_policy = "always"

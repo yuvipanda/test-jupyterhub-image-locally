@@ -29,6 +29,10 @@ On your local machine, you need the following tools installed:
 5. You should see a text box that allows you to specify any docker image to start. Enter the
    name of the image you wanna try.
 
+   Note that if you are pulling from a remote registry, large images may take a while to pull.
+   The default configuration waits upto 5 minutes for an image to start. You can speed this up
+   by manually doing a `docker pull <image>` before trying.
+
 6. If it starts up successfully, then success!
 
 7. If the image fails to start, you can use regular `docker` commands to look at its logs.
