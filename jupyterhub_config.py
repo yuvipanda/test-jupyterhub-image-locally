@@ -49,10 +49,11 @@ c.DockerSpawner.image = "quay.io/jupyter/base-notebook"
 # don't delete containers when they stop, so we can look at logs
 c.DockerSpawner.remove = False
 
-# Mount an empty volume on the home directory, to simulate $HOME in the built
-# image not showing up when user launches on a hub.
+# FIXME: Without `"no_copy": True` here, the contents of $HOME from the
+# image are copied into the volume by docker! This is very different from
+# k8s behavior, so this doesn't actually do what we want it to do.
 c.DockerSpawner.mounts = [
-    {"source": "homes", "target": "/home/jovyan"}
+    {"source": "home-{username}", "target": "/home/jovyan"}
 ]
 
 # Wait upto 5minutes for server to start, as pulling images may take a while
