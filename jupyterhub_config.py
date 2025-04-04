@@ -44,7 +44,7 @@ c.JupyterHub.ip = "0.0.0.0"
 c.JupyterHub.hub_ip = "0.0.0.0"
 
 # pick a default image to use when none is specified
-c.DockerSpawner.image = "jupyter/base-notebook"
+c.DockerSpawner.image = "quay.io/jupyter/base-notebook"
 
 # don't delete containers when they stop, so we can look at logs
 c.DockerSpawner.remove = False
