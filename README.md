@@ -5,7 +5,7 @@ Simple config to test if an image you want to use with your JupyterHub works
 On your local machine, you need the following tools installed:
 
 1. An installation of [Docker](https://www.docker.com/)
-2. An installation of [docker-compose](https://docs.docker.com/compose/install/#scenario-two-install-the-compose-plugin)
+2. An installation of [the Docker compose plugin](https://docs.docker.com/compose/install/#scenario-two-install-the-compose-plugin)
 
 ## Set-up
 
@@ -16,10 +16,10 @@ On your local machine, you need the following tools installed:
    cd test-jupyterhub-image-locally
    ```
 
-2. Start up the configured JupyterHub via `docker-compose`.
+2. Start up the configured JupyterHub via `docker compose`.
 
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
 
 3. Go to https://localhost:8000, you should see a JupyterHub running!
