@@ -19,7 +19,7 @@ On your local machine, you need the following tools installed:
 2. Start up the configured JupyterHub via `docker compose`.
 
    ```bash
-   docker compose up --build
+   docker compose up --build --detach
    ```
 
 3. Go to https://localhost:8000, you should see a JupyterHub running!
@@ -51,6 +51,12 @@ On your local machine, you need the following tools installed:
 
    ```bash
    docker logs <container-name>
+   ```
+
+8. Clean up!
+
+   ```bash
+   docker compose down
    ```
 
 ## Useful resources
